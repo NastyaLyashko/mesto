@@ -10,3 +10,9 @@
         max-width:  calc(100% - 38px);
     }
 }
+
+@media (max-width: 460px) {
+    .header {
+        max-width: 100%;
+    }
+}
