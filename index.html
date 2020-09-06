@@ -10,76 +10,78 @@
     <div class="page">
         <header class="header">
             <img src="./images/logo.svg" alt="Лого" class="header__logo">
-
         </header>
         <main>
             <section class="profile">
                 <img src="./images/Cousteau.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
                 <div class=" profile__columns">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <buttom type="button" class="profile__edit-button" aria-label="Редактировать"></buttom>
+                    <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
                     <p class="profile__job">Исследователь океана</p>
                 </div>
                 <button type="button" class="profile__add-button" aria-label="Добавить"></button>
             </section>
             <section class="elements">
-                <div class="elements__card">
+                <ul class="elements__list">
+                <li class="elements__card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="elements__image">
                     <div class="elements__info">
-                       <p class="elements__text">Карачаевск</p>
+                       <h2 class="elements__text">Карачаевск</h2>
                        <button type="button" class="elements__like-button" aria-label='Лайк'></button>
                     </div>
-                </div>
-                <div class="elements__card">
+                </li>
+                <li class="elements__card">
                     <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="elements__image">
                     <div class="elements__info">
-                        <p class="elements__text">Гора Эльбрус</p>
+                        <h2 class="elements__text">Гора Эльбрус</h2>
                         <button type="button" class="elements__like-button" aria-label='Лайк'></button>
                     </div>
-                </div>
-                <div class="elements__card">
+                </li>
+                <li class="elements__card">
                     <img src="./images/dombay.jpg" alt="Домбай" class="elements__image">
                     <div class="elements__info">
-                        <p class="elements__text">Домбай</p>
+                        <h2 class="elements__text">Домбай</h2>
                         <button type="button" class="elements__like-button" aria-label='Лайк'></button>
                     </div>
-                </div>
-                <div class="elements__card">
+                </li>
+                <li class="elements__card">
                     <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="elements__image">
                     <div class="elements__info">
-                        <p class="elements__text">Гора Эльбрус</p>
+                        <h2 class="elements__text">Гора Эльбрус</h2>
                         <button type="button" class="elements__like-button" aria-label='Лайк'></button>
                     </div>
-                </div>
-                <div class="elements__card">
+                </li>
+                <li class="elements__card">
                     <img src="./images/dombay.jpg" alt="Домбай" class="elements__image">
                     <div class="elements__info">
-                        <p class="elements__text">Домбай</p>
+                        <h2 class="elements__text">Домбай</h2>
                         <button type="button" class="elements__like-button" aria-label='Лайк'></button>
                     </div>
-                </div>
-                <div class="elements__card">
+                </li>
+                <li class="elements__card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="elements__image">
                     <div class="elements__info">
-                       <p class="elements__text">Карачаевск</p>
+                       <h2 class="elements__text">Карачаевск</h2>
                        <button type="button" class="elements__like-button" aria-label='Лайк'></button>
                     </div>
-                </div>
+                </li>
+                </ul>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
         <section class="popup">
-            <form class="popup__container">
-                <button class="popup__close-button"></button>
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <input type="text" name="name" class="popup__input popup__input_name">
-                <input type="text" name="job" class="popup__input popup__input_job">
-                <button class="popup__save-button">Сохранить</button>
-            </form>
+            <div class="popup__container">
+                <button type="button" class="popup__close-button"></button>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form class="popup__form" method="GET" name="popup-form">
+                    <input type="text" name="name" class="popup__input popup__input_type_name">
+                    <input type="text" name="job" class="popup__input popup__input_type_job">
+                    <button type="submit" class="popup__save-button">Сохранить</button>
+                 </form>
+            </div>
         </section>
     </div>
-
     <script src="./scripts/script.js" defer></script>
 </body>

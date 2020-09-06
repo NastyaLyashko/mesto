@@ -1,14 +1,11 @@
-console.log('hello')
-
-
-const popup = document.querySelector('.popup');
+let popup = document.querySelector('.popup');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const formSubmit = document.querySelector('.popup__container');
 const buttonClose = document.querySelector('.popup__close-button');
 const textUserName = document.querySelector('.profile__name');
 const textUserJob = document.querySelector('.profile__job');
-const inputUserName = document.querySelector('.popup__input_name');
-const inputUserJob = document.querySelector('.popup__input_job');
+const inputUserName = document.querySelector('.popup__input_type_name');
+const inputUserJob = document.querySelector('.popup__input_type_job');
 
 const loadUserData = () => {
     inputUserName.value = textUserName.textContent;

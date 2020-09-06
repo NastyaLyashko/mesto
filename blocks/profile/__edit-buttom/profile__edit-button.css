@@ -6,6 +6,7 @@
     height: 24px;
     box-shadow: none;
     align-self: center;
+    transition: opacity 1s linear;
 }
 
 .profile__edit-button:hover {
@@ -19,6 +20,5 @@
     .profile__edit-button {
         width: 18px;
         height: 18px;
-
     }
 }
