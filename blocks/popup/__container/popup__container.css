@@ -13,5 +13,6 @@
 @media (max-width: 510px) {
     .popup__container {
         max-width:  calc(100% - 80px);
+        padding: 30px 20px;
     }
 }

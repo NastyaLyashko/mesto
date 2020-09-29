@@ -22,50 +22,7 @@
                 <button type="button" class="profile__add-button" aria-label="Добавить"></button>
             </section>
             <section class="elements">
-                <ul class="elements__list">
-                <li class="elements__card">
-                    <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="elements__image">
-                    <div class="elements__info">
-                       <h2 class="elements__text">Карачаевск</h2>
-                       <button type="button" class="elements__like-button" aria-label='Лайк'></button>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="elements__image">
-                    <div class="elements__info">
-                        <h2 class="elements__text">Гора Эльбрус</h2>
-                        <button type="button" class="elements__like-button" aria-label='Лайк'></button>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/dombay.jpg" alt="Домбай" class="elements__image">
-                    <div class="elements__info">
-                        <h2 class="elements__text">Домбай</h2>
-                        <button type="button" class="elements__like-button" aria-label='Лайк'></button>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="elements__image">
-                    <div class="elements__info">
-                        <h2 class="elements__text">Гора Эльбрус</h2>
-                        <button type="button" class="elements__like-button" aria-label='Лайк'></button>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/dombay.jpg" alt="Домбай" class="elements__image">
-                    <div class="elements__info">
-                        <h2 class="elements__text">Домбай</h2>
-                        <button type="button" class="elements__like-button" aria-label='Лайк'></button>
-                    </div>
-                </li>
-                <li class="elements__card">
-                    <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="elements__image">
-                    <div class="elements__info">
-                       <h2 class="elements__text">Карачаевск</h2>
-                       <button type="button" class="elements__like-button" aria-label='Лайк'></button>
-                    </div>
-                </li>
-                </ul>
+                <ul class="elements__list"></ul>
             </section>
         </main>
         <footer class="footer">
@@ -82,6 +39,34 @@
                  </form>
             </div>
         </section>
+        <section class="popup popup_place">
+            <div class="popup__container popup__container_place">
+                <button type="button" class="popup__close-button popup__close-button_place"></button>
+                <h3 class="popup__title">Новое место</h3>
+                <form class="popup__form" method="GET" name="popup-mesto">
+                    <input type="text" name="place" placeholder="Название" class="popup__input popup__input_type_place">
+                    <input type="text" name="img" placeholder="Ссылка на картинку" class="popup__input popup__input_type_img">
+                    <button type="submit" class="popup__save-button">Создать</button>
+                 </form>
+            </div>
+        </section>
+        <section class="popup popup_photo">
+            <div class="popup__container popup__container_photo">
+                <button class="popup__close-button popup__close-button_photo" aria-label="Закрыть"></button>
+                    <img src="" alt="" class="popup__img">
+                    <p class="popup__caption"></p>
+            </div>
+        </section>
     </div>
+    <template id="templateCard">
+        <li class="elements__card">
+            <img src="" alt="" class="elements__image">
+            <button class="elements__delete-button" type="button"></button>
+            <div class="elements__info">
+                <h2 class="elements__text"></h2>
+                <button type="button" class="elements__like-button" aria-label='Лайк'></button>
+             </div>
+        </li>
+    </template>
     <script src="./scripts/script.js" defer></script>
 </body>

@@ -5,3 +5,8 @@
     line-height: 1.2;
 }
 
+@media (max-width: 510px) {
+    .popup__input {
+        font-size: 12px;
+    }
+}
