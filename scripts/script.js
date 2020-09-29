@@ -1,33 +1,33 @@
-let popup = document.querySelector('.popup');
-let buttonEdit = document.querySelector('.profile__edit-button');
-let formSubmit = document.querySelector('.popup__container');
-let buttonClose = document.querySelector('.popup__close-button');
+const popup = document.querySelector('.popup');
+const buttonEdit = document.querySelector('.profile__edit-button');
+const formSubmit = document.querySelector('.popup__container');
+const buttonClose = document.querySelector('.popup__close-button');
 let textUserName = document.querySelector('.profile__name');
 let textUserJob = document.querySelector('.profile__job');
-let inputUserName = document.querySelector('.popup__input_type_name');
-let inputUserJob = document.querySelector('.popup__input_type_job');
+const inputUserName = document.querySelector('.popup__input_type_name');
+const inputUserJob = document.querySelector('.popup__input_type_job');
 
-let loadUserData = () => {
+const loadUserData = () => {
     inputUserName.value = textUserName.textContent;
     inputUserJob.value = textUserJob.textContent;
 }
 
-let saveUserData = () => {
+const saveUserData = () => {
     textUserName.textContent = inputUserName.value;
     textUserJob.textContent = inputUserJob.value;
 }
 
-let openPopup = (event) => {
+const openPopup = (event) => {
     loadUserData();
     popup.classList.add('popup_opened');
 }
 
-let closePopup = (event) => {
+const closePopup = (event) => {
     event.preventDefault();
     popup.classList.remove('popup_opened');
 }
 
-let saveForm = (event) => {
+const saveForm = (event) => {
     saveUserData();
     closePopup(event);
 }
@@ -36,14 +36,14 @@ buttonEdit.addEventListener('click', openPopup);
 buttonClose.addEventListener('click', closePopup);
 formSubmit.addEventListener('submit', saveForm);
 
-let popupPlace = document.querySelector('.popup_place');
-let formSubmitPlace = document.querySelector('.popup__container_place');
-let buttonClosePlace = document.querySelector('.popup__close-button_place');
-let buttonAdd = document.querySelector('.profile__add-button');
+const popupPlace = document.querySelector('.popup_place');
+const formSubmitPlace = document.querySelector('.popup__container_place');
+const buttonClosePlace = document.querySelector('.popup__close-button_place');
+const buttonAdd = document.querySelector('.profile__add-button');
 let PlaceName = document.querySelector('.elements__text');
 let PlaceImg = document.querySelector('.elements__image');
-let inputPlaceName = document.querySelector('.popup__input_type_place');
-let inputPlaceImg = document.querySelector('.popup__input_type_img');
+const inputPlaceName = document.querySelector('.popup__input_type_place');
+const inputPlaceImg = document.querySelector('.popup__input_type_img');
 
 const initialCards = [
     {
@@ -80,21 +80,21 @@ const cards = document.querySelector('.elements__list');
 const templateCard = document.querySelector('#templateCard');
 const buttonClosePhoto = document.querySelector('.popup__close-button_photo')
 
-let openPopupPlace = (event) => {
+const openPopupPlace = (event) => {
     popupPlace.classList.add('popup_opened');
 }
 
-let closePopupPlace = (event) => {
+const closePopupPlace = (event) => {
     event.preventDefault();
     popupPlace.classList.remove('popup_opened');
 }
 
-let savePlaceData = () => {
+const savePlaceData = () => {
     PlaceName = inputPlaceName.value;
     PlaceImg = inputPlaceImg.value;
 }
 
-let saveFormPlace = (event) => {
+const saveFormPlace = (event) => {
     savePlaceData();
     closePopupPlace(event);
     newCard = {
