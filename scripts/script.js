@@ -12,7 +12,6 @@ function openPopup (popup) {
 }
 
 function closePopup (popup) {
-    event.preventDefault();
     popup.classList.remove('popup_opened');
 }
 
@@ -32,6 +31,7 @@ const editPopup = (event) => {
 }
 
 const saveForm = (event) => {
+    event.preventDefault();
     saveUserData();
     closePopup (popupEdit);
 }
@@ -83,22 +83,15 @@ const photoCaption = document.querySelector('.popup__caption');
 const cards = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('#templateCard');
 
-
-const savePlaceData = () => {
-    placeName = inputPlaceName.value;
-    placeImg = inputPlaceImg.value;
-}
-
 const saveFormPlace = (event) => {
-    savePlaceData();
+    event.preventDefault();
     closePopup (popupPlace);
-    newCard = {
-        name: placeName,
-        link: placeImg
+    const newCard = {
+        name: inputPlaceName.value,
+        link: inputPlaceImg.value
     }
     const card = createCard(newCard);
     cards.prepend(card);
-    addListeners(newCard);
 }
 
 buttonAdd.addEventListener('click', () => {openPopup (popupPlace)});
@@ -116,7 +109,7 @@ const likeButtonActive = (event) => {
 }
 
 const openPopupPhoto = (event) => {
-    const img = event.target.closest('.elements__image');
+    const img = event.target;
     photoImage.src = img.src;
     photoCaption.textContent = img.alt;
     openPopup(popupPhoto);
