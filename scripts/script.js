@@ -7,13 +7,32 @@ const textUserJob = document.querySelector('.profile__job');
 const inputUserName = document.querySelector('.popup__input_type_name');
 const inputUserJob = document.querySelector('.popup__input_type_job');
 
+
+const closePopupEsc = (event) => {
+    const popupOpened  = document.querySelector('.popup_opened');
+    if (event.key === 'Escape' && popupOpened) {
+        closePopup(popupOpened);
+    }
+}
+
+const closePopupOverlay = (event) => {
+    const popupOpened = document.querySelector('.popup_opened');
+    if (event.target === event.currentTarget) {
+        closePopup(popupOpened);
+    }
+}
+
 function openPopup (popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEsc);
+    enableValidation(validationConfig);
 }
 
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupEsc);
 }
+
 
 const loadUserData = () => {
     inputUserName.value = textUserName.textContent;
@@ -39,6 +58,7 @@ const saveForm = (event) => {
 buttonEdit.addEventListener('click', editPopup);
 buttonClose.addEventListener('click', () => {closePopup (popupEdit)});
 formSubmit.addEventListener('submit', saveForm);
+popupEdit.addEventListener('click', closePopupOverlay);
 
 const popupPlace = document.querySelector('.popup_place');
 const formSubmitPlace = document.querySelector('.popup__container_place');
@@ -97,6 +117,7 @@ const saveFormPlace = (event) => {
 buttonAdd.addEventListener('click', () => {openPopup (popupPlace)});
 buttonClosePlace.addEventListener('click', () => {closePopup (popupPlace)});
 formSubmitPlace.addEventListener('submit', saveFormPlace);
+popupPlace.addEventListener('click', closePopupOverlay);
 
 
 const deleteCard = (event) => {
@@ -116,6 +137,7 @@ const openPopupPhoto = (event) => {
 }
 
 photoCloseButton.addEventListener('click', () => {closePopup (popupPhoto)});
+popupPhoto.addEventListener('click', closePopupOverlay);
 
 const addListeners = (card) => { 
     card.querySelector('.elements__delete-button').addEventListener('click', deleteCard); 
@@ -141,3 +163,5 @@ function render() {
 }
 
 render();
+
+
