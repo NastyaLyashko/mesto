@@ -25,7 +25,6 @@ const closePopupOverlay = (event) => {
 function openPopup (popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupEsc);
-    enableValidation(validationConfig);
 }
 
 function closePopup (popup) {
@@ -69,32 +68,7 @@ let placeImg = document.querySelector('.elements__image');
 const inputPlaceName = document.querySelector('.popup__input_type_place');
 const inputPlaceImg = document.querySelector('.popup__input_type_img');
 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+
 
 const popupPhoto = document.querySelector('.popup_photo');
 const photoImage = document.querySelector('.popup__img');
@@ -132,6 +106,7 @@ const likeButtonActive = (event) => {
 const openPopupPhoto = (event) => {
     const img = event.target;
     photoImage.src = img.src;
+    photoImage.alt = img.alt;
     photoCaption.textContent = img.alt;
     openPopup(popupPhoto);
 }
