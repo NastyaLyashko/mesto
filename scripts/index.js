@@ -1,3 +1,7 @@
+import Card from './card.js';
+//import FormValidation from './formValidator.js';
+import {validationConfig, initialCards} from './validationConfig.js';
+
 const popupEdit = document.querySelector('.popup_edit');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const formSubmit = document.querySelector('.popup__container');
@@ -71,9 +75,7 @@ const inputPlaceImg = document.querySelector('.popup__input_type_img');
 
 
 const popupPhoto = document.querySelector('.popup_photo');
-const photoImage = document.querySelector('.popup__img');
 const photoCloseButton = document.querySelector('.popup__close-button_photo');
-const photoCaption = document.querySelector('.popup__caption');
 const cards = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('#templateCard');
 
@@ -94,49 +96,18 @@ formSubmitPlace.addEventListener('submit', saveFormPlace);
 popupPlace.addEventListener('click', closePopupOverlay);
 
 
-const deleteCard = (event) => {
-    event.preventDefault();
-    event.target.closest('.elements__card').remove();
-};
 
-const likeButtonActive = (event) => {
-    event.target.classList.toggle('elements__like-button_active');
-}
-
-const openPopupPhoto = (event) => {
-    const img = event.target;
-    photoImage.src = img.src;
-    photoImage.alt = img.alt;
-    photoCaption.textContent = img.alt;
-    openPopup(popupPhoto);
-}
 
 photoCloseButton.addEventListener('click', () => {closePopup (popupPhoto)});
 popupPhoto.addEventListener('click', closePopupOverlay);
 
-const addListeners = (card) => { 
-    card.querySelector('.elements__delete-button').addEventListener('click', deleteCard); 
-    card.querySelector('.elements__like-button').addEventListener('click', likeButtonActive); 
-    card.querySelector('.elements__image').addEventListener('click', openPopupPhoto); 
-};
 
-function createCard({name, link}) {
-    const card = cardTemplate.content.cloneNode(true);
-    const cardImg = card.querySelector('.elements__image');
-    cardImg.src = link;
-    cardImg.alt = name;
-    card.querySelector('.elements__text').textContent = name;
-    addListeners(card);
-    return card; 
-};
 
-function render() {
-    initialCards.forEach((cardInfo)=> {
-        const card = createCard(cardInfo);
-        cards.prepend(card); 
-    });
-}
 
-render();
+initialCards.forEach (({name, link}) => {
+    const card = new Card({name, link}, cardTemplate);
+    const element = card.getElement();
+    cards.append(element);
 
+})
 

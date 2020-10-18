@@ -1,4 +1,4 @@
-const validationConfig  = {
+export const validationConfig  = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__save-button',
@@ -8,7 +8,7 @@ const validationConfig  = {
     inputData: 'popup__input'
  }; 
 
- const initialCards = [
+ export const initialCards = [
     {
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -34,3 +34,4 @@ const validationConfig  = {
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
