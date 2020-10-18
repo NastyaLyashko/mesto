@@ -4,10 +4,19 @@ class Card {
         this._link = link,
         this._cardSelector = cardSelector
     }
-    _getTemplate() {
-        return document.querySelector(this._cardSelector).content.cloneNode(true).children[0];
-    }
+    //_getTemplate() {
+   //     return document.querySelector(this._cardSelector).content.cloneNode(true).children[0];
+   // }
 
+    _getTemplate() {
+        const cardElement = document
+         .querySelector(this._cardSelector)
+         .content
+         .querySelector('.elements__card')
+         .cloneNode(true);
+        return cardElement;
+       }
+    
     _deleteCard() {
         this._element.remove();
     }

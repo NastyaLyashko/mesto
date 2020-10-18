@@ -5,7 +5,9 @@ export const validationConfig  = {
     inactiveButtonClass: 'popup__save-button_inactive',
     inputErrorClass: 'popup__input_type_error', 
     errorClass: 'popup__error_visible',
-    inputData: 'popup__input'
+    inputData: 'popup__input',
+    cardTemplate: '#templateCard'
+
  }; 
 
  export const initialCards = [

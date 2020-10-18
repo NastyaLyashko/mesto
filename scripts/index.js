@@ -77,7 +77,6 @@ const inputPlaceImg = document.querySelector('.popup__input_type_img');
 const popupPhoto = document.querySelector('.popup_photo');
 const photoCloseButton = document.querySelector('.popup__close-button_photo');
 const cards = document.querySelector('.elements__list');
-const cardTemplate = document.querySelector('#templateCard');
 
 const saveFormPlace = (event) => {
     event.preventDefault();
@@ -105,7 +104,7 @@ popupPhoto.addEventListener('click', closePopupOverlay);
 
 
 initialCards.forEach (({name, link}) => {
-    const card = new Card({name, link}, cardTemplate);
+    const card = new Card({name, link}, validationConfig.cardTemplate);
     const element = card.getElement();
     cards.append(element);
 
