@@ -1,8 +1,9 @@
 class Card {
-    constructor({name, link}, cardSelector) {
+    constructor({name, link}, cardSelector, openPopupPhoto) {
         this._name = name,
         this._link = link,
-        this._cardSelector = cardSelector
+        this._cardSelector = cardSelector,
+        this._openPopupPhoto = openPopupPhoto
     }
     //_getTemplate() {
    //     return document.querySelector(this._cardSelector).content.cloneNode(true).children[0];
@@ -25,14 +26,11 @@ class Card {
         this._element.querySelector('.elements__like-button').classList.toggle('elements__like-button_active');
     }
     
-    _openPopupPhoto() {
-        const img = this._element.querySelector('.elements__image');
-        const photoImage = document.querySelector('.popup__img');
-        const photoCaption = document.querySelector('.popup__caption');
-        photoImage.src = img.src;
-        photoImage.alt = img.alt;
-        photoCaption.textContent = img.alt;
-        this._openPopup(popupPhoto);
+    _openPhoto() {
+        this._openPopupPhoto(
+            this._name,
+            this._link,
+        )
     }
 
     _setListeners() {

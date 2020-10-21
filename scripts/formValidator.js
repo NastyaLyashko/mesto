@@ -1,4 +1,4 @@
-import {validationConfig} from './validationConfig';
+import {validationConfig} from './validationConfig.js';
 
 class FormValidation {
     constructor (formSelector, validationConfig) {
@@ -56,12 +56,12 @@ class FormValidation {
     
     _setEventListeners = () => {
         
-        const inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
+        const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     
         const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     
         inputList.forEach((inputElement) => {
-            inputElement.addEventListener('input', (event) => {
+            inputElement.addEventListener('input', () => {
                 this._chekInputValidity(inputElement);
                 this._toggleButtonState(inputList, buttonElement);
             });

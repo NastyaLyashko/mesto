@@ -6,8 +6,11 @@ export const validationConfig  = {
     inputErrorClass: 'popup__input_type_error', 
     errorClass: 'popup__error_visible',
     inputData: 'popup__input',
-    cardTemplate: '#templateCard'
-
+    cardTemplate: '#templateCard',
+    inputPlaceName: document.querySelector('.popup__input_type_place'),
+    inputPlaceImg: document.querySelector('.popup__input_type_img'),
+    formProfileSelector: 'popup-form',
+    formPlaceSelector: 'popup-mesto',
  }; 
 
  export const initialCards = [

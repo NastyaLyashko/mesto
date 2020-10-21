@@ -1,5 +1,5 @@
 import Card from './card.js';
-//import FormValidation from './formValidator.js';
+//mport FormValidation from './formValidator.js';
 import {validationConfig, initialCards} from './validationConfig.js';
 
 const popupEdit = document.querySelector('.popup_edit');
@@ -69,24 +69,30 @@ const buttonClosePlace = document.querySelector('.popup__close-button_place');
 const buttonAdd = document.querySelector('.profile__add-button');
 let placeName = document.querySelector('.elements__text');
 let placeImg = document.querySelector('.elements__image');
+const photoImage = document.querySelector('.popup__img');
 const inputPlaceName = document.querySelector('.popup__input_type_place');
 const inputPlaceImg = document.querySelector('.popup__input_type_img');
-
-
-
 const popupPhoto = document.querySelector('.popup_photo');
 const photoCloseButton = document.querySelector('.popup__close-button_photo');
 const cards = document.querySelector('.elements__list');
 
+const openPopupPhoto = (name, link) => {
+    photoImage.src = img.src;
+    photoImage.alt = img.alt;
+    photoCaption.textContent = img.alt;
+    openPopup(popupPhoto);
+}
+
 const saveFormPlace = (event) => {
     event.preventDefault();
     closePopup (popupPlace);
-    const newCard = {
+    const cardData = {
         name: inputPlaceName.value,
         link: inputPlaceImg.value
     }
-    const card = createCard(newCard);
-    cards.prepend(card);
+    const newCard = new Card(cardData, validationConfig.cardTemplate);
+    const element = newCard.getElement();
+    cards.prepend(element);
 }
 
 buttonAdd.addEventListener('click', () => {openPopup (popupPlace)});
@@ -95,18 +101,19 @@ formSubmitPlace.addEventListener('submit', saveFormPlace);
 popupPlace.addEventListener('click', closePopupOverlay);
 
 
-
-
 photoCloseButton.addEventListener('click', () => {closePopup (popupPhoto)});
 popupPhoto.addEventListener('click', closePopupOverlay);
 
 
-
-
 initialCards.forEach (({name, link}) => {
-    const card = new Card({name, link}, validationConfig.cardTemplate);
+    const card = new Card({name, link}, validationConfig.cardTemplate, openPopupPhoto);
     const element = card.getElement();
     cards.append(element);
 
 })
 
+const formProfileValidator = new FormValidation(validationConfig.formProfileSelector, validationConfig);
+formProfileValidator.enableValidation();
+
+const formPlaceValidator = new FormValidation(validationConfig.formPlaceSelector, validationConfig);
+formPlaceValidator.enableValidation()
