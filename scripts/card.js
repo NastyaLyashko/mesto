@@ -36,7 +36,7 @@ class Card {
     _setListeners() {
         this._element.querySelector('.elements__delete-button').addEventListener('click', () =>  this._deleteCard());
         this._element.querySelector('.elements__like-button').addEventListener('click', () =>  this._likeToggle()); 
-        this._element.querySelector('.elements__image').addEventListener('click', () =>  this._openPopupPhoto);  
+        this._element.querySelector('.elements__image').addEventListener('click', () =>  this._openPhoto());  
     }
 
 

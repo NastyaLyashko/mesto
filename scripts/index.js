@@ -67,19 +67,18 @@ const popupPlace = document.querySelector('.popup_place');
 const formSubmitPlace = document.querySelector('.popup__container_place');
 const buttonClosePlace = document.querySelector('.popup__close-button_place');
 const buttonAdd = document.querySelector('.profile__add-button');
-let placeName = document.querySelector('.elements__text');
-let placeImg = document.querySelector('.elements__image');
 const photoImage = document.querySelector('.popup__img');
 const inputPlaceName = document.querySelector('.popup__input_type_place');
 const inputPlaceImg = document.querySelector('.popup__input_type_img');
 const popupPhoto = document.querySelector('.popup_photo');
 const photoCloseButton = document.querySelector('.popup__close-button_photo');
+const photoCaption = document.querySelector('.popup__caption');
 const cards = document.querySelector('.elements__list');
 
 const openPopupPhoto = (name, link) => {
-    photoImage.src = img.src;
-    photoImage.alt = img.alt;
-    photoCaption.textContent = img.alt;
+    photoImage.src = link;
+    photoImage.alt = name;
+    photoCaption.textContent = name;
     openPopup(popupPhoto);
 }
 
@@ -90,7 +89,7 @@ const saveFormPlace = (event) => {
         name: inputPlaceName.value,
         link: inputPlaceImg.value
     }
-    const newCard = new Card(cardData, validationConfig.cardTemplate);
+    const newCard = new Card(cardData, validationConfig.cardTemplate, openPopupPhoto);
     const element = newCard.getElement();
     cards.prepend(element);
 }
