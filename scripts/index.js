@@ -1,5 +1,5 @@
 import Card from './card.js';
-//mport FormValidation from './formValidator.js';
+import FormValidation from './formValidator.js';
 import {validationConfig, initialCards} from './validationConfig.js';
 
 const popupEdit = document.querySelector('.popup_edit');
@@ -111,8 +111,9 @@ initialCards.forEach (({name, link}) => {
 
 })
 
-const formProfileValidator = new FormValidation(validationConfig.formProfileSelector, validationConfig);
-formProfileValidator.enableValidation();
 
 const formPlaceValidator = new FormValidation(validationConfig.formPlaceSelector, validationConfig);
-formPlaceValidator.enableValidation()
+formPlaceValidator.enableValidation();
+
+const formProfileValidator = new FormValidation(validationConfig.formProfileSelector, validationConfig);
+formProfileValidator.enableValidation();

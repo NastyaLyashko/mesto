@@ -7,10 +7,10 @@ export const validationConfig  = {
     errorClass: 'popup__error_visible',
     inputData: 'popup__input',
     cardTemplate: '#templateCard',
-    inputPlaceName: document.querySelector('.popup__input_type_place'),
-    inputPlaceImg: document.querySelector('.popup__input_type_img'),
-    formProfileSelector: 'popup-form',
-    formPlaceSelector: 'popup-mesto',
+    inputPlaceName: '.popup__input_type_place',
+    inputPlaceImg: '.popup__input_type_img',
+    formProfileSelector: '.popup__form_profile',
+    formPlaceSelector: '.popup__form_mesto'
  }; 
 
  export const initialCards = [
