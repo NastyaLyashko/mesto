@@ -3,7 +3,7 @@ import {validationConfig} from './validationConfig.js';
 class FormValidation {
     constructor (formSelector, validationConfig) {
         this._formSelector = formSelector;
-        this._formElement = document.querySelector(validationConfig.formSelector);
+        this._formElement = document.querySelector(formSelector);
         this._inputSelector = validationConfig.inputSelector;
         this._submitButtonSelector = validationConfig.submitButtonSelector;
         this._inactiveButtonClass = validationConfig.inactiveButtonClass;
