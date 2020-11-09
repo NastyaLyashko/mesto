@@ -10,7 +10,9 @@ export const validationConfig  = {
     inputPlaceName: '.popup__input_type_place',
     inputPlaceImg: '.popup__input_type_img',
     formProfileSelector: '.popup__form_profile',
-    formPlaceSelector: '.popup__form_mesto'
+    formPlaceSelector: '.popup__form_mesto',
+    cardList: '.elements__list',
+    popupContainer: '.popup__container'
  }; 
 
  export const initialCards = [

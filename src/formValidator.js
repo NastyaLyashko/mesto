@@ -1,4 +1,4 @@
-import {validationConfig} from './validationConfig.js';
+import {validationConfig} from './constants.js';
 
 class FormValidation {
     constructor (formSelector, validationConfig) {
@@ -13,7 +13,7 @@ class FormValidation {
     }
 
     
-    _showInputError = (inputElement, errorMessage) => {
+    _showInputError (inputElement, errorMessage) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
         
         errorElement.textContent = errorMessage;
@@ -22,7 +22,7 @@ class FormValidation {
         inputElement.classList.add(this._inputErrorClass);
     }
     
-    _hideInputError = (inputElement) => {
+    _hideInputError (inputElement) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
         
         errorElement.textContent = '';
@@ -31,7 +31,7 @@ class FormValidation {
         inputElement.classList.remove(this._inputErrorClass);
     }
     
-    _chekInputValidity = (inputElement) => {
+    _chekInputValidity (inputElement) {
         const isInputNotValid = !inputElement.validity.valid;
     
         if (isInputNotValid) {
@@ -42,7 +42,7 @@ class FormValidation {
         }
     }
     
-    _toggleButtonState = (inputList, buttonElement) => {
+    _toggleButtonState (inputList, buttonElement) {
         const hasValidInput = inputList.some((inputElement) => !inputElement.validity.valid);
     
         if(hasValidInput) {
@@ -55,7 +55,7 @@ class FormValidation {
         
     }
     
-    _setEventListeners = () => {
+    _setEventListeners () {
         
         const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     
@@ -72,7 +72,7 @@ class FormValidation {
     };
     
     
-    enableValidation = () => {
+    enableValidation () {
         const submitFormHandler = (event) => {
             event.preventDefault();
         };
