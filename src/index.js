@@ -1,11 +1,11 @@
 import './styles/index.css';
-import Card from './card.js';
-import FormValidation from './formValidator.js';
-import {validationConfig, initialCards} from './constants.js';
-import Section from './Section.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import Card from './components/card.js';
+import FormValidation from './components/formValidator.js';
+import {validationConfig, initialCards} from './components/constants.js';
+import Section from './components/Section.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import UserInfo from './components/UserInfo.js';
 
 const popupEdit = document.querySelector('.popup_edit');
 const buttonEdit = document.querySelector('.profile__edit-button');
@@ -21,7 +21,7 @@ const cards = document.querySelector('.elements__list');
 const popupZoomImg = new PopupWithImage (popupPhoto);
 popupZoomImg.setEventListeners();
 
-const cardList = new Section ({
+const cardList = new Section ({ 
     items: initialCards,
     renderer: (item) => {
         const card = new Card (item, validationConfig.cardTemplate,{
