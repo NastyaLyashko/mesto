@@ -16,6 +16,15 @@ export default class Popup {
         
     }
 
+    renderLoading (isLoading) {
+        const saveButton = this._popupSelector.querySelector('.popup__save-button')
+        if (isLoading) {
+            saveButton.textContent = 'Сохранение...'
+        } else {
+            saveButton.textContent = 'Сохранить'
+        }
+    }
+
     _handleEscClose (event) {
         if (event.key === 'Escape') {
             this.close();
@@ -34,3 +43,4 @@ export default class Popup {
         
       }
 }
+

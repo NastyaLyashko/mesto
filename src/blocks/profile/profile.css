@@ -4,6 +4,7 @@
     margin: auto;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
 }
 
 @media (max-width: 935px) {

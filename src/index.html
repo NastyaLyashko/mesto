@@ -12,7 +12,11 @@
         </header>
         <main>
             <section class="profile">
-                <img src="./images/Cousteau.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+                <div class="profile__avatar-containter">
+                    <img src="./images/Cousteau.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+                    <button type="button" class="profile__avatar-edit-button"></button>
+                </div>
+                
                 <div class=" profile__columns">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
@@ -41,7 +45,7 @@
                         <span class="popup__error" id="name-input-error"></span>
                     </label>
                     <label class="popup__field">
-                        <input type="text" name="job" class="popup__input popup__input_type_job" 
+                        <input type="text" name="about" class="popup__input popup__input_type_job" 
                                 id="job-input" 
                                 required 
                                 minlength="2" 
@@ -58,7 +62,7 @@
                 <h3 class="popup__title">Новое место</h3>
                 <form class="popup__form popup__form_mesto" method="GET" name="popup-mesto" novalidate>
                     <label class="popup__field popup__field_first">
-                        <input type="text" name="place" placeholder="Название" class="popup__input popup__input_type_place" 
+                        <input type="text" name="name" placeholder="Название" class="popup__input popup__input_type_place" 
                                 id="place-input" 
                                 required 
                                 minlength="2" 
@@ -66,7 +70,7 @@
                         <span class="popup__error" id="place-input-error"></span>
                     </label>
                     <label class="popup__field">
-                        <input type="url" name="img" placeholder="Ссылка на картинку" class="popup__input popup__input_type_img" 
+                        <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_img" 
                                 id="img-input" 
                                 required>
                         <span class="popup__error" id="img-input-error"></span>
@@ -82,6 +86,30 @@
                     <p class="popup__caption"></p>
             </div>
         </section>
+        <section class="popup popup_question">
+            <div class="popup__container popup__container_question">
+                <button type="button" class="popup__close-button popup__close-button_question"></button>
+                <form action="" class="popup__form popup__form_confirm">
+                    <h3 class="popup__title popup__title_question">Вы уверены?</h3>
+                    <button type="submit" class="popup__save-button popup__save-button_question">Да</button>
+                </form>
+            </div>
+        </section>
+        <section class="popup popup_edit-avatar">
+            <div class="popup__container popup__container_edit-avatar">
+                <button type="button" class="popup__close-button popup__close-button_edit-avatar"></button>
+                <h3 class="popup__title">Обновить аватар</h3>
+                <form class="popup__form popup__form_edit-avatar" method="PATCH" name="popup_edit-avatar" novalidate>
+                    <label class="popup__field">
+                        <input type="url" name="avatar" placeholder="Ссылка на картинку" class="popup__input popup__input_type_img" 
+                                id="img-input" 
+                                required>
+                        <span class="popup__error" id="img-input-error"></span>
+                    </label>
+                    <button type="submit" class="popup__save-button popup__save-avatar">Сохранить</button>
+                 </form>
+            </div>
+        </section>
     </div>
     <template id="templateCard">
         <li class="elements__card">
@@ -89,7 +117,11 @@
             <button class="elements__delete-button" type="button"></button>
             <div class="elements__info">
                 <h2 class="elements__text"></h2>
-                <button type="button" class="elements__like-button" aria-label='Лайк'></button>
+                <div class="elements__like">
+                    <button type="button" class="elements__like-button" aria-label='Лайк'></button>
+                    <p class="elements__like-counter"></p>
+                </div>
+                
              </div>
         </li>
     </template>
