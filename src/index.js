@@ -68,6 +68,21 @@ function handleCardDelete (card) {
 }
 
 
+function handleCardLikes (card) {
+    const idCard = card._id;
+        if (card._isLiked() === true) {
+            api.deleteLike(idCard)
+            .then((res) => {
+                card.changeLike(res)
+            })
+        } else {
+            api.putLike(idCard)
+            .then((res) => {
+                card.changeLike(res)
+            })
+        }
+}    
+    
 
 const cardList = new Section ({ 
     renderer: (item, userData) => {
@@ -76,23 +91,8 @@ const cardList = new Section ({
                 popupZoomImg.open({name, link})
                 } 
             },
-            handleCardDelete, {
-            handleCardLikes (card) {
-                    const idCard = card._id;
-                    if (card.likeClicked()) {
-                        api.putLike(idCard)
-                        .then((res) => {
-                          card.likeToggle(res.likes.length)
-                        })
-                    } else {
-                        api.deleteLike(cardData.likes, cardData._id)
-                        .then((res) => {
-                          card.likeToggle(res.likes.length)
-                        })
-                    }
-                }    
-            }
-
+            handleCardDelete, 
+            handleCardLikes
         );
         const element = card.getElement(item._id);
 
@@ -107,13 +107,15 @@ const popupFormPlace = new PopupWithForm ({
     popupSelector: popupPlace,
     handleFormSubmit: (cardData) => {
         popupFormPlace.renderLoading(true);
-        api.postCard(cardData)
-        .then((res) => {
-            const card = new Card(res, validationConfig.cardTemplate, {
-                handleCardClick: (res) => {
+        Promise.all([api.postCard(cardData), api.getUserData()])
+        .then(([cardData, userData]) => {
+            const card = new Card(cardData, userData, validationConfig.cardTemplate, {
+                handleCardClick: (name, link) => {
                     popupZoomImg.open({name, link})
                 }
-            }, handleCardDelete
+            }, 
+            handleCardDelete,
+            handleCardLikes
             );
             const element = card.getElement();
             cards.prepend(element);

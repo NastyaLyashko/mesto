@@ -22,3 +22,9 @@
     background-size: 26px 26px;
     cursor: pointer;
 } 
+
+@media (max-width: 460px) {
+    .profile__avatar-edit-button {
+        margin: 42px auto 14px ;
+    }
+}
