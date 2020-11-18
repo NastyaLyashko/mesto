@@ -45,58 +45,77 @@ const user = new UserInfo({
 
 
 Promise.all([api.getInitialCards(), api.getUserData()])
-    .then(([items, userData]) => {
+    .then(([cardData, userData]) => {
         user.setUserInfo(userData)
-        cardList.renderItems(items, userData);   
+        cardList.renderItems(cardData, userData);   
+    })
+    .catch(err => {
+        console.log(err)
     })
 
+
+const popupDelete = new PopupConfirmation({
+    popupSelector: popupQuestion,
+    onSubmit: (card) => {
+        api.deleteCard(card.id)
+        .then((res) => {
+            card.element.remove();
+            popupDelete.close();
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    
+})
+popupDelete.setEventListeners();
 
 function handleCardDelete (card) {
-    const deleteElement = card._element;
-    const idCard = card._id;
-    const popupDelete = new PopupConfirmation({
-        popupSelector: popupQuestion,
-        handleSubmitForm: () => {
-            api.deleteCard(idCard)
-            .then((res) => {
-                deleteElement.remove();
-            })
-        }
-    })
-    popupDelete.setEventListeners();
-    popupDelete.open();
+    popupDelete.open(card);
+    
 }
 
 
 function handleCardLikes (card) {
-    const idCard = card._id;
+    const idCard = card.id;
         if (card._isLiked() === true) {
             api.deleteLike(idCard)
             .then((res) => {
                 card.changeLike(res)
+            })
+            .catch(err => {
+                console.log(err)
             })
         } else {
             api.putLike(idCard)
             .then((res) => {
                 card.changeLike(res)
             })
+            .catch(err => {
+                console.log(err)
+            })
         }
 }    
     
+const createCard = (cardData, userData) => {
+    const card = new Card (cardData, userData, validationConfig.cardTemplate,{
+        handleCardClick: (name, link) => {
+            popupZoomImg.open({name, link})
+            } 
+        },
+        handleCardDelete, 
+        handleCardLikes
+    );
+
+    return card.getElement();
+}
+
+
 
 const cardList = new Section ({ 
-    renderer: (item, userData) => {
-        const card = new Card (item, userData, validationConfig.cardTemplate,{
-            handleCardClick: (name, link) => {
-                popupZoomImg.open({name, link})
-                } 
-            },
-            handleCardDelete, 
-            handleCardLikes
-        );
-        const element = card.getElement(item._id);
-
-        cardList.addItem(element);
+    renderer: (cardData, userData) => {
+        const newElement = createCard(cardData, userData);
+        cardList.addItem(newElement);
         },
     },
     validationConfig.cardList
@@ -109,16 +128,12 @@ const popupFormPlace = new PopupWithForm ({
         popupFormPlace.renderLoading(true);
         Promise.all([api.postCard(cardData), api.getUserData()])
         .then(([cardData, userData]) => {
-            const card = new Card(cardData, userData, validationConfig.cardTemplate, {
-                handleCardClick: (name, link) => {
-                    popupZoomImg.open({name, link})
-                }
-            }, 
-            handleCardDelete,
-            handleCardLikes
-            );
-            const element = card.getElement();
-            cards.prepend(element);
+            const newElement = createCard(cardData, userData);
+            popupFormPlace.close();
+            cards.prepend(newElement);
+        })
+        .catch(err => {
+            console.log(err)
         })
         .finally(() => {
             popupFormPlace.renderLoading(false); 
@@ -134,6 +149,10 @@ const popupFormProfile = new PopupWithForm({
         api.patchUserData(userData)
         .then((userData) => {
             user.setUserInfo(userData);
+            popupFormProfile.close();
+        })
+        .catch(err => {
+            console.log(err)
         })
         .finally(() => {
             popupFormProfile.renderLoading(false); 
@@ -149,6 +168,10 @@ const popupAvatarEdit = new PopupWithForm ({
         api.patchUserAvatar(userData)
         .then((res) => {
             avatar.src = res.avatar;
+            popupAvatarEdit.close();
+        })
+        .catch(err => {
+            console.log(err)
         })
         .finally(() => {
             popupAvatarEdit.renderLoading(false); 

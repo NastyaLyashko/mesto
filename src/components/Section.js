@@ -4,8 +4,8 @@
         this._container = document.querySelector(containerSelector);
       }
 
-      renderItems(items, userData) {
-          items.forEach(item => this._renderer(item, userData))
+      renderItems(cardData, userData) {
+        cardData.forEach(item => this._renderer(item, userData))
         }
       
       addItem(element) {

@@ -15,9 +15,7 @@ export default class Api {
       
             return Promise.reject(`Ошибка: ${res.status}`);
           })
-          .catch(err => {
-            console.log(err)
-        })
+
 
     } 
     
@@ -33,9 +31,7 @@ export default class Api {
                 return Promise.reject(`Ошибка: ${res.status}`);
             }
         })
-        .catch(err => {
-            console.log(err)
-        })
+
     }
 
     patchUserData(item) {
@@ -58,9 +54,6 @@ export default class Api {
         .then((res) => {
             return res;
         })
-        .catch(err => {
-            console.log(err)
-        })
     }
 
     postCard(item) {
@@ -82,9 +75,6 @@ export default class Api {
         .then((res) => {
             return res;
         })
-        .catch(err => {
-            console.log(err)
-        })
 
     }
 
@@ -104,9 +94,6 @@ export default class Api {
             } 
             return Promise.reject(`Ошибка: ${res.status}`);
         })
-        .catch(err => {
-            console.log(err)
-        })
     }
 
     deleteCard(idCard) {
@@ -124,10 +111,6 @@ export default class Api {
       
             return Promise.reject(`Ошибка: ${res.status}`);
         })
-        .catch(err => {
-            console.log(err)
-        })
-
     }
 
     putLike(idCard) {
@@ -145,10 +128,6 @@ export default class Api {
       
             return Promise.reject(`Ошибка: ${res.status}`);
         })
-        .catch(err => {
-            console.log(err)
-        })
-
     }
 
     deleteLike(idCard) {
@@ -165,9 +144,6 @@ export default class Api {
             }
       
             return Promise.reject(`Ошибка: ${res.status}`);
-        })
-        .catch(err => {
-            console.log(err)
         })
     }
 
