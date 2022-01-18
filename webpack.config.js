@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // подключите плагин 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 
 module.exports = {
@@ -15,14 +15,10 @@ module.exports = {
         loader: 'babel-loader',
         exclude: '/node_modules/'
       },
-      // добавили правило для обработки файлов
       {
-        // регулярное выражение, которое ищет все файлы с такими расширениями
         test: /\.(png|svg|jpg|gif|woff|woff2)$/,
-        // при обработке этих файлов нужно использовать file-loader
         loader: 'file-loader'
       },
-      // аналогично добавьте правило для работы с html
       {
         test: /\.html$/,
         loader: 'html-loader',
@@ -34,7 +30,6 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            // добавьте объект options
             options: { importLoaders: 1 }
           },
           'postcss-loader'
@@ -44,7 +39,7 @@ module.exports = {
   } ,
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html' // путь к файлу index.html
+      template: './src/index.html'
     }),
     new MiniCssExtractPlugin() 
   ] 
